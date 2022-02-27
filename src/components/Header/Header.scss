@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.header {
+  background-color: rgb(0, 0, 0);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__input {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    width: 40vw;
+
+    img {
+      width: 2rem;
+      background-color: rgb(197, 83, 17);
+    }
+
+    input {
+      //   flex-direction: 0.8;
+      padding: 0.4rem;
+      border-radius: 6px;
+      outline: none;
+      border: none;
+      margin-left: 0.2rem;
+      font-size: clamp(0.8rem, 1.1vw, 1.5rem);
+      caret-color: brown;
+      font-family: "Roboto", sans-serif;
+      font-weight: 500;
+      text-align: start;
+    }
+  }
+}
+
+// .header__selectors {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// #categories,
+// #genre {
+//   padding: 0.5rem;
+//   font-size: clamp(1rem, 1, 2vw, 1.3rem);
+//   border: 1px solid red;
+//   outline-width: 0;
+//   margin: 0 0.5rem;
+//   border-radius: 5px;
+//   cursor: pointer;
+// }
+
+// option {
+//   background-color: rgb(255, 255, 255);
+//   transition: all 0.4s ease;
+
+//   &:hover {
+//     background-color: aqua;
+//   }
+// }
+
+.dropdowns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  background: transparent;
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 5px;
+  padding: 0.4rem 1rem !important;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1rem, 1.1vw, 1.3rem);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown.active > .link,
+.link:hover {
+  color: rgb(0, 0, 0);
+  background-color: white;
+}
+
+.dropdown {
+  position: relative;
+  margin-right: 2rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  width: auto;
+  left: 0;
+  top: calc(100% + 0.25rem);
+  background-color: white;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  z-index: 50;
+}
+
+.dropdown.active > .link + .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  .links {
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: #777;
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(0.8rem, 1.1vw, 1.5rem);
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      color: black;
+    }
+  }
+}

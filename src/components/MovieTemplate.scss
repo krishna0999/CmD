@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+
+$desktop: 1024px;
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: $desktop) {
+      @content;
+    }
+  }
+}
+
+.movie {
+  transition: all 0.3s ease-in-out;
+
+  img {
+    width: 100%;
+    height: 33rem;
+  }
+
+  &:hover {
+    .movie__caption {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .movie__image {
+      transform: translateY(-10px);
+    }
+
+    .movie__thumb {
+      &::after {
+        top: 0;
+      }
+    }
+
+    .movie__snippet {
+      margin: 20px 0;
+    }
+  }
+
+  &__thumb {
+    position: relative;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: none;
+
+    @include breakpoint(desktop) {
+      max-height: 500px;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.8) 40%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transition: 0.3s;
+
+      @include breakpoint(desktop) {
+        top: calc(100% - 140px);
+      }
+    }
+  }
+
+  &__image {
+    transition: 0.5s ease-in-out;
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    padding: 0 20px;
+    color: white;
+    transform: translateY(-50%);
+    text-align: center;
+    transition: 0.3s;
+
+    @include breakpoint(desktop) {
+      top: calc(100% - 110px);
+      transform: unset;
+    }
+  }
+
+  &__title {
+    display: -webkit-box;
+    max-height: 85px;
+    overflow: hidden;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1rem, 1.6vw, 1.9rem);
+    line-height: 28px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0px 1px 5px black;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  &__date {
+    display: -webkit-box;
+    max-height: 85px;
+    overflow: hidden;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(0.7rem, 1vw, 1rem);
+    line-height: 28px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0px 1px 5px black;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  &__snippet {
+    display: -webkit-box;
+    max-height: 150px;
+    margin: 20px 0;
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(1rem, 1.3vw, 1, 4rem);
+    line-height: 1.5;
+    text-align: justify;
+    text-overflow: ellipsis;
+    transition: 0.5s ease-in-out;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+
+    @include breakpoint(desktop) {
+      margin: 60px 0;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+
+    .movie__button {
+      display: inline-block;
+      padding: 10px 20px;
+      color: white;
+      background-color: transparent;
+      border: 1px solid white;
+      font-family: "Roboto", sans-serif;
+      font-size: clamp(0.8rem, 1vw, 1.2rem);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        color: black;
+        background-color: white;
+      }
+    }
+  }
+}

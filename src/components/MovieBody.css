@@ -1,0 +1,43 @@
+.movies {
+  padding: 1rem;
+  background-color: black;
+}
+
+.movies__container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto;
+      grid-template-columns: auto auto auto auto;
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .movies__container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 910px) {
+  .movies__container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .movies__container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    padding: 0.3vw 1rem;
+  }
+}
+/*# sourceMappingURL=MovieBody.css.map */
