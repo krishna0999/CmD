@@ -5,19 +5,29 @@ import "./MovieBody.css";
 
 function MoviesBody() {
   const context = useContext(moviesContext);
-  const { movies } = context;
+  const { movies, searchResults, getGenericMovies } = context;
 
   useEffect(() => {
-    // getPopularMovies();
+    const receive = async () => {
+      await getGenericMovies("popular");
+    };
+
+    receive();
   }, []);
 
-  console.log(movies);
+  console.log(movies?.results);
   return (
     <div className="movies">
       <div className="movies__container">
-        {movies?.results?.map((movie) => (
-          <MovieTemplate movie={movie} key={movie.id} />
-        ))}
+        {(searchResults.length >= 1 ? searchResults : movies)?.hasOwnProperty(
+          "results"
+        ) // Checking whether there is need to do '.results or not'
+          ? (searchResults.length >= 1 ? searchResults : movies)?.results?.map(
+              (movie) => <MovieTemplate movie={movie} key={movie.id} />
+            )
+          : (searchResults.length >= 1 ? searchResults : movies)?.map(
+              (movie) => <MovieTemplate movie={movie} key={movie.id} />
+            )}
       </div>
     </div>
   );

@@ -1,32 +1,11 @@
-$tablet: 910px;
-$tablet_big: 1024px;
-$tablet_small: 550px;
-
 .movies {
   padding: 1rem;
   background-color: rgb(0, 0, 0);
 }
 
 .movies__container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 1rem;
-
-  @media (max-width: $tablet_big) {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 1rem;
-  }
-
-  @media (max-width: $tablet) {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 1rem;
-  }
-
-  @media (max-width: $tablet_small) {
-    display: grid;
-    grid-template-columns: auto;
-    padding: 0.3vw 1rem;
-  }
 }

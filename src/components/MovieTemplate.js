@@ -7,10 +7,9 @@ function MovieTemplate({ movie }) {
 
   const handleDetails = (e) => {
     let movie_id = e.target.id;
-    console.log(movie_id);
     location(`/${movie_id}`);
   };
-  // vote_average
+
   return (
     <div className="movie">
       <figure className="movie__thumb">

@@ -22,7 +22,15 @@ function App() {
               </>
             }
           />
-          <Route exact path="/:id" element={<MovieDetails />} />
+          <Route
+            exact
+            path="/:id"
+            element={
+              <>
+                <MovieDetails /> <Footer />
+              </>
+            }
+          />
         </Routes>
       </MoviesState>
     </Router>

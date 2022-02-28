@@ -6,7 +6,11 @@ import "./Header.css";
 function Header() {
   const [select, setSelect] = useState("popular");
   const context = useContext(moviesContext);
-  const { getGenericMovies } = context;
+  const { getGenericMovies, getSearchResults, movies } = context;
+
+  const handleSearchResults = (e) => {
+    getSearchResults(e.target.value);
+  };
 
   document.addEventListener("click", (e) => {
     const isDropdownButton = e.target.matches("[data-dropdown-button]");
@@ -29,15 +33,13 @@ function Header() {
     const buttons = document.querySelectorAll(".links");
 
     Array.from(buttons).forEach((item) => {
-      // console.log(item.innerHTML);
       item.addEventListener("click", (e) => {
         setSelect(e.target.value);
       });
     });
     getGenericMovies(select);
+    console.log(movies);
   }, [select]);
-
-  console.log(select);
 
   return (
     <div className="header">
@@ -61,7 +63,12 @@ function Header() {
             alt=""
           />
         </div>
-        <input type="text" placeholder="Search for movies..." />
+        <input
+          id="searchinput"
+          type="text"
+          placeholder="Search for movies..."
+          onChange={handleSearchResults}
+        />
       </div>
 
       <div className="dropdowns">
@@ -74,9 +81,6 @@ function Header() {
               <div className="dropdown-links">
                 <button className="links" value="popular">
                   Popular
-                </button>
-                <button className="links" value="latest">
-                  Latest
                 </button>
                 <button className="links" value="top_rated">
                   Top-rated

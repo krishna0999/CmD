@@ -14,6 +14,7 @@ const MoviesState = (props) => {
     initialRecommendations
   );
   const [review, setReview] = useState(initialReview);
+  const [searchResults, setSearchResults] = useState(movies);
 
   // Fetch movies according to the users choice
   const getGenericMovies = async (options) => {
@@ -26,11 +27,12 @@ const MoviesState = (props) => {
         },
       }
     );
-    // console.log(response);
 
     const json = await response.json();
     setMovies(json);
+    console.log(movies);
   };
+  console.log(movies);
 
   // Get the details of a single movie
   const getMovieDetail = async (id) => {
@@ -47,7 +49,9 @@ const MoviesState = (props) => {
 
     const json = await response.json();
     setMovies(json);
+    // console.log(movies);
   };
+  // console.log(movies);
 
   // Get the details of all the cast in a single movie
   const getCastDetail = async (id) => {
@@ -117,6 +121,19 @@ const MoviesState = (props) => {
     setMovies(json);
   };
 
+  const getSearchResults = (searchString) => {
+    const searchMovies = movies.hasOwnProperty("results")
+      ? movies?.results?.filter((item) =>
+          item?.title.toLowerCase().includes(searchString.toLowerCase())
+        )
+      : movies?.filter((item) =>
+          item?.title.toLowerCase().includes(searchString.toLowerCase())
+        );
+
+    setSearchResults(searchMovies);
+    // console.log(searchMovies);
+  };
+
   return (
     <MoviesContext.Provider
       value={{
@@ -124,12 +141,14 @@ const MoviesState = (props) => {
         cast,
         recommendations,
         review,
+        searchResults,
         getGenericMovies,
         getTvShows,
         getMovieDetail,
         getCastDetail,
         getRecommendations,
         getReview,
+        getSearchResults,
       }}
     >
       {props.children}
