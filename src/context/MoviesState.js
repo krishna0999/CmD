@@ -7,11 +7,13 @@ const MoviesState = (props) => {
   const initialMovies = [];
   const initialCast = [];
   const initialRecommendations = [];
+  const initialReview = [];
   const [cast, setCast] = useState(initialCast);
   const [movies, setMovies] = useState(initialMovies);
   const [recommendations, setRecommendations] = useState(
     initialRecommendations
   );
+  const [review, setReview] = useState(initialReview);
 
   // Fetch movies according to the users choice
   const getGenericMovies = async (options) => {
@@ -81,6 +83,23 @@ const MoviesState = (props) => {
     setRecommendations(json);
   };
 
+  // Get review of a particular movie
+  const getReview = async (id) => {
+    const response = await fetch(
+      `${host}/${id}/reviews?api_key=624fc02e98ece02d693a2c9ba09fa6f8&language=en-US&page=1`,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    );
+    // console.log(response);
+
+    const json = await response.json();
+    setReview(json);
+  };
+
   // Get all the TV shows
   const getTvShows = async (options) => {
     const response = await fetch(
@@ -104,11 +123,13 @@ const MoviesState = (props) => {
         movies,
         cast,
         recommendations,
+        review,
         getGenericMovies,
         getTvShows,
         getMovieDetail,
         getCastDetail,
         getRecommendations,
+        getReview,
       }}
     >
       {props.children}

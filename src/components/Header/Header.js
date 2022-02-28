@@ -44,6 +44,7 @@ function Header() {
       <a href="/">
         <img src={logo} alt="logo" />
       </a>
+
       <div className="header__input">
         <div
           className="header__inputImage"
@@ -62,21 +63,7 @@ function Header() {
         </div>
         <input type="text" placeholder="Search for movies..." />
       </div>
-      {/* <div className="header__selectors">
-        <select name="categories" id="categories">
-          <option value="">Select by category</option>
-          <option value="popular">Popular</option>
-          <option value="upcoming">Upcoming</option>
-          <option value="top_rated">Top-rated</option>
-        </select>
 
-        <select name="genre" id="genre">
-          <option value="">Select by genre</option>
-          <option value="comedy">Comedy</option>
-          <option value="horror">Horror</option>
-          <option value="action">Action</option>
-        </select>
-      </div> */}
       <div className="dropdowns">
         <div className="dropdown" data-dropdown>
           <button className="link" data-dropdown-button>
@@ -122,6 +109,11 @@ function Header() {
           </div>
         </div>
       </div>
+      {/* <div className="header__menu">
+        <div className="line1"></div>
+        <div className="line2"></div>
+        <div className="line3"></div>
+      </div> */}
     </div>
   );
 }

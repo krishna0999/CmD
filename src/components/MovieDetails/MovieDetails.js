@@ -13,17 +13,24 @@ function MovieDetails() {
     cast,
     recommendations,
     getRecommendations,
+    review,
+    getReview,
   } = context;
   const { id } = useParams();
   useEffect(() => {
     getMovieDetail(id);
     getCastDetail(id);
     getRecommendations(id);
-  }, []);
+    getReview(id);
+  }, [id]);
 
   const cast1 = cast?.cast?.map((item) => item.name).slice(0, 6);
 
-  console.log(movies, cast1, recommendations);
+  const avatar = review?.results?.map(
+    (item) => item.author_details.avatar_path
+  );
+
+  // console.log(movies, cast1, recommendations, review);
 
   return (
     <div className="movieDetails">
@@ -59,10 +66,25 @@ function MovieDetails() {
               <p>{genre.name}</p>
             ))}
           </div>
+
+          {/* Movie's album */}
+          <h2>Album : </h2>
+          <div className="movieDetails__album">
+            <p>{movies?.belongs_to_collection?.name}</p>
+          </div>
+
+          {/* Movie's ratings */}
+          <h2>Ratings : </h2>
+          <div className="movieDetails__ratings">
+            <p>
+              {movies?.vote_average} - {movies?.vote_count} people have voted.
+            </p>
+          </div>
         </div>
 
         {/* Movie overview block below the image section ---> */}
         <div className="movieDetails__overview">
+          <h2>Overview :</h2>
           <p>{movies?.overview}</p>
         </div>
 
@@ -83,10 +105,19 @@ function MovieDetails() {
         </div>
       </div>
 
+      {/* <div className="movieDetails__review">
+        {review?.results?.map((item) => (
+          <div className="author__image">
+            <img src={avatar} alt="Author_avatar" />
+          </div>
+        ))}
+      </div> */}
+
       <div className="movieDetails__recommended">
+        <div className="horizontal__line"></div>
         <h1>Recommended for you </h1>
         {recommendations?.results?.map((item) => (
-          <Recommended movie={item} key={item.id} />
+          <Recommended movie={item} key={item.id} id={item.id} />
         ))}
       </div>
     </div>

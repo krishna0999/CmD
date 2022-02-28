@@ -37,10 +37,48 @@
   border: none;
   margin-left: 0.2rem;
   font-size: clamp(0.8rem, 1.1vw, 1.5rem);
-  caret-color: brown;
+  caret-color: #e68404;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   text-align: start;
+}
+
+@media (max-width: 750px) {
+  .header__input {
+    display: none;
+  }
+}
+
+.header .header__menu {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.3rem;
+}
+
+.header .header__menu .line1,
+.header .header__menu .line2,
+.header .header__menu .line3 {
+  width: 1.7rem;
+  height: 0.2rem;
+  background-color: white;
+  border-radius: 5px;
+}
+
+@media (max-width: 750px) {
+  .header .header__menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 .dropdowns {
@@ -57,13 +95,13 @@
 
 .link {
   background: transparent;
-  border: 1px solid #dfdfdf;
+  border: 1px solid #e68404;
   border-radius: 5px;
   padding: 0.4rem 1rem !important;
   text-decoration: none;
-  color: white;
+  color: #e68404;
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1rem, 1.1vw, 1.3rem);
+  font-size: clamp(0.6rem, 1.1vw, 1.3rem);
   cursor: pointer;
   padding: 0;
   -webkit-transition: all 0.3s ease-in-out;
@@ -72,13 +110,19 @@
 
 .dropdown.active > .link,
 .link:hover {
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: #e68404;
 }
 
 .dropdown {
   position: relative;
   margin-right: 2rem;
+}
+
+@media (max-width: 750px) {
+  .dropdown {
+    margin-right: 0.5rem;
+  }
 }
 
 .dropdown-menu {
@@ -124,7 +168,7 @@
   background: none;
   border: none;
   text-decoration: none;
-  color: #777;
+  color: #e68404;
   font-family: "Roboto", sans-serif;
   font-size: clamp(0.8rem, 1.1vw, 1.5rem);
   cursor: pointer;
@@ -132,6 +176,6 @@
 }
 
 .dropdown-links .links:hover {
-  color: black;
+  color: #af6300;
 }
 /*# sourceMappingURL=Header.css.map */

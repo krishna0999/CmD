@@ -10,7 +10,7 @@ function MovieTemplate({ movie }) {
     console.log(movie_id);
     location(`/${movie_id}`);
   };
-
+  // vote_average
   return (
     <div className="movie">
       <figure className="movie__thumb">
@@ -34,6 +34,9 @@ function MovieTemplate({ movie }) {
             </button>
           </div>
         </figcaption>
+        <div className="movie__rating">
+          <p>{movie?.vote_average}</p>
+        </div>
       </figure>
     </div>
   );
